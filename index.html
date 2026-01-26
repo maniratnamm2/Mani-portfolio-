@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
         rel="stylesheet">
 
     <style>
@@ -187,6 +187,7 @@
         .nav-links {
             display: flex;
             gap: var(--space-4);
+            align-items: center;
         }
 
         .nav-links a {
@@ -448,6 +449,123 @@
             border-radius: 20px;
         }
 
+        /* --- GET IN TOUCH SECTION --- */
+        .contact-section {
+            background-color: var(--bg-deep);
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-8);
+            align-items: start;
+        }
+
+        .contact-left h2 {
+            font-size: clamp(3rem, 6vw, 4.5rem);
+            line-height: 1.1;
+            margin-bottom: var(--space-4);
+        }
+
+        .contact-left p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 480px;
+        }
+
+        .contact-right {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-6);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition-smooth);
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold-primary);
+        }
+
+        .contact-icon svg {
+            width: 24px;
+            height: 24px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 1.5;
+        }
+
+        .contact-text-label {
+            display: block;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            font-size: 0.7rem;
+            color: var(--gold-primary);
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .contact-text-main {
+            font-family: var(--font-serif);
+            font-size: 1.75rem;
+            transition: var(--transition-smooth);
+        }
+
+        .contact-item:hover .contact-text-main {
+            color: var(--gold-primary);
+            transform: translateX(8px);
+        }
+
+        .availability-box {
+            padding-left: var(--space-6);
+            border-left: 1px solid var(--gold-dim);
+            margin-top: var(--space-4);
+        }
+
+        .availability-box p {
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .availability-box span {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Toast Notification */
+        #copy-toast {
+            position: fixed;
+            bottom: 32px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--gold-primary);
+            color: var(--bg-deep);
+            padding: 12px 24px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 0.8rem;
+            border-radius: 4px;
+            z-index: 1000;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        #copy-toast.show {
+            transform: translateX(-50%) translateY(0);
+        }
+
         /* --- FOOTER --- */
         footer {
             border-top: 1px solid var(--border-subtle);
@@ -481,6 +599,11 @@
                 max-width: 500px;
                 margin: 0 auto;
             }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: var(--space-8);
+            }
         }
 
         @media (max-width: 768px) {
@@ -508,6 +631,10 @@
             .projects-grid {
                 grid-template-columns: 1fr;
             }
+
+            .contact-text-main {
+                font-size: 1.25rem;
+            }
         }
     </style>
 </head>
@@ -522,6 +649,7 @@
                     <a href="#about">Philosophy</a>
                     <a href="#experience">History</a>
                     <a href="#projects">Masterpieces</a>
+                    <a href="#contact" class="gold-text">Reach Me</a>
                     <button id="theme-toggle" class="theme-toggle" aria-label="Toggle light/dark mode">
                         <svg id="moon-icon" viewBox="0 0 24 24">
                             <path
@@ -741,6 +869,54 @@
         </div>
     </section>
 
+    <section id="contact" class="section-padding contact-section">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-left">
+                    <span class="overline">Get in Touch</span>
+                    <h2>Let's build the <br>future of banking.</h2>
+                    <p>Available for high-stakes engineering, accessibility audits, and digital transformation consulting.</p>
+                </div>
+                
+                <div class="contact-right">
+                    <div class="contact-item" id="email-trigger" style="cursor: pointer;" role="button" aria-label="Click to copy email address">
+                        <div class="contact-icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3 8L10.8906 13.2604C11.5624 13.7083 12.4376 13.7083 13.1094 13.2604L21 8M5 5H19C20.1046 5 21 5.89543 21 7V17C21 18.1046 20.1046 19 19 19H5C3.89543 19 3 18.1046 3 17V7C3 5.89543 3.89543 5H5Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <span class="contact-text-label" id="copy-label">Click to copy address</span>
+                            <span class="contact-text-main">maniratnamorgu@gmail.com</span>
+                        </div>
+                    </div>
+
+                    <a href="https://linkedin.com/in/mani-ratna-a8b419346" target="_blank" class="contact-item" aria-label="Visit LinkedIn Profile">
+                        <div class="contact-icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M16 8C17.5913 8 19.1174 8.63214 20.2426 9.75736C21.3679 10.8826 22 12.4087 22 14V21H18V14C18 13.4696 17.7893 12.9609 17.4142 12.5858C17.0391 12.2107 16.5304 12 16 12C15.4696 12 14.9609 12.2107 14.5858 12.5858C14.2107 12.9609 14 13.4696 14 14V21H10V14C10 12.4087 10.6321 10.8826 11.7574 9.75736C12.8826 8.63214 14.4087 8 16 8Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+                                <rect x="2" y="9" width="4" height="12" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="4" cy="4" r="2" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <span class="contact-text-label">Professional Network</span>
+                            <span class="contact-text-main">LinkedIn Profile ↗</span>
+                        </div>
+                    </a>
+
+                    <div class="availability-box">
+                        <span class="contact-text-label">Availability</span>
+                        <p>Open for Global Opportunities</p>
+                        <span>Current timezone: IST (UTC+5:30)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="copy-toast">Address Copied to Clipboard</div>
+
     <footer>
         <div class="container">
             <span class="footer-logo">MANIRATNA M</span>
@@ -779,6 +955,31 @@
                 sunIcon.style.display = 'none';
                 moonIcon.style.display = 'block';
             }
+        });
+
+        // Copy Email to Clipboard Logic
+        const emailTrigger = document.getElementById('email-trigger');
+        const copyLabel = document.getElementById('copy-label');
+        const toast = document.getElementById('copy-toast');
+        const emailAddress = "maniratnamorgu@gmail.com";
+
+        emailTrigger.addEventListener('click', () => {
+            navigator.clipboard.writeText(emailAddress).then(() => {
+                // Show toast
+                toast.classList.add('show');
+                
+                // Update label temporarily
+                const originalLabel = copyLabel.innerText;
+                copyLabel.innerText = "COPIED!";
+                copyLabel.style.color = "#ffffff";
+
+                // Reset after 2.5 seconds
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                    copyLabel.innerText = originalLabel;
+                    copyLabel.style.color = "var(--gold-primary)";
+                }, 2500);
+            });
         });
     </script>
 </body>
