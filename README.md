@@ -22,6 +22,11 @@ The website is fully responsive and optimized for smooth viewing across devices,
 - `index.html` – Main webpage structure and content  
 - `mani.js` – Client-side interactions and dynamic behavior  
 - Assets (images/icons/fonts) – Visual and branding resources
+
+## Contact
+If you'd like to connect regarding engineering leadership, architecture, or collaboration opportunities, feel free to reach out via the contact details shared in the portfolio.
+
+Built with a focus on scalability, accessibility, and engineering excellence.
 ## Getting Started
 ### 1. Clone the repository
 ```bash
@@ -29,7 +34,4 @@ git clone <your-repository-url>
 cd mani_portfolio
 2. Run locally
 Open index.html directly in your browser
-Contact
-If you'd like to connect regarding engineering leadership, architecture, or collaboration opportunities, feel free to reach out via the contact details shared in the portfolio.
 
-Built with a focus on scalability, accessibility, and engineering excellence.
